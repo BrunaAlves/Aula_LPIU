@@ -5,6 +5,8 @@
  */
 package forms;
 
+import classes.Usuario;
+
 /**
  *
  * @author alunoces
@@ -34,6 +36,7 @@ public class Form1 extends javax.swing.JFrame {
         btCancelar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         tfSenha = new javax.swing.JPasswordField();
+        lbMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Processo de Login");
@@ -49,6 +52,11 @@ public class Form1 extends javax.swing.JFrame {
         btEfetuar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEfetuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/stock_not-spam.png"))); // NOI18N
         btEfetuar.setText("Efetuar ");
+        btEfetuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEfetuarActionPerformed(evt);
+            }
+        });
 
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
@@ -68,25 +76,32 @@ public class Form1 extends javax.swing.JFrame {
             }
         });
 
+        lbMensagem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbMensagem.setForeground(new java.awt.Color(204, 0, 0));
+        lbMensagem.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbSenha)
-                    .addComponent(tfLogin)
-                    .addComponent(tfSenha))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(btEfetuar)
-                .addGap(18, 18, 18)
-                .addComponent(btCancelar)
-                .addGap(18, 18, 18)
-                .addComponent(btSair)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbSenha)
+                            .addComponent(tfLogin)
+                            .addComponent(tfSenha))
+                        .addGap(51, 51, 51)
+                        .addComponent(lbMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap(11, Short.MAX_VALUE)
+                        .addComponent(btEfetuar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btSair)))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -96,11 +111,16 @@ public class Form1 extends javax.swing.JFrame {
                 .addComponent(lbLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(lbSenha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lbSenha))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEfetuar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,8 +138,31 @@ public class Form1 extends javax.swing.JFrame {
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         tfLogin.setText(""); // Limpa campos matricula e senha
         tfSenha.setText("");
+        lbMensagem.setText("");
         tfLogin.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEfetuarActionPerformed
+        String matricula = tfLogin.getText();
+        String senha = tfSenha.getText();                
+        
+        Usuario user = new Usuario();
+        
+        if(user.validarMatricula(matricula)){
+            if(user.validarSenha(senha)){
+                if(user.efetuarLogin(matricula, senha)){
+                    lbMensagem.setText("Login efetuado com sucesso!");
+                }
+                else{
+                    lbMensagem.setText("Login incorreto!");
+                }
+            }
+            else
+                lbMensagem.setText("Matricula/Senha estão incorretos!");
+        }
+        else
+            lbMensagem.setText("Matricula/Senha estão incorretos!");
+    }//GEN-LAST:event_btEfetuarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +204,7 @@ public class Form1 extends javax.swing.JFrame {
     private javax.swing.JButton btEfetuar;
     private javax.swing.JButton btSair;
     private javax.swing.JLabel lbLogin;
+    private javax.swing.JLabel lbMensagem;
     private javax.swing.JLabel lbSenha;
     private javax.swing.JTextField tfLogin;
     private javax.swing.JPasswordField tfSenha;
