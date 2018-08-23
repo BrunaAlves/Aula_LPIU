@@ -19,29 +19,123 @@ public class Carro {
     private int diasLocacao;
     
     public Carro() {
-        this.codigo = "sd";
-        this.modelo = "";
-        this.nome = "";
+        marca ="Fiat";
+        modelo ="Sedan";
+        diasLocacao = 10;
+           
     }
     
-    public float calcularValorMulta(int quantidadeDiasLocados){
-        float valormulta = 0;
-        
-        if(quantidadeDiasLocados > diasLocacao){
-            valormulta = (quantidadeDiasLocados - diasLocacao) * 0.15f;
-            return valormulta;
+    public float calcularValorMulta(int dias)
+    {
+        if(dias > getDiasLocacao()){
+            return (dias-getDiasLocacao()) + 0.15f*getValorLocacao();
         }
         
-        return valormulta;
+        return 0;
 
     }
     
-    public float valorTotalAluguel(int quantidadeDiasLocados){
-        float valortotal = 0;
-        
-        valortotal = valorLocacao + calcularValorMulta(quantidadeDiasLocados);
-                
-        return valortotal;
+    public float valorTotalAluguel(int dias){
+        return getDiasLocacao()*getValorLocacao() + calcularValorMulta(dias);
     }
+
+    /**
+     * @return the codigo
+     */
+    public String getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the marca
+     */
+    public String getMarca() {
+        return marca;
+    }
+
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    /**
+     * @return the modelo
+     */
+    public String getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * @return the preco
+     */
+    public float getPreco() {
+        return preco;
+    }
+
+    /**
+     * @param preco the preco to set
+     */
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    /**
+     * @return the valorLocacao
+     */
+    public float getValorLocacao() {
+        return valorLocacao;
+    }
+
+    /**
+     * @param valorLocacao the valorLocacao to set
+     */
+    public void setValorLocacao(float valorLocacao) {
+        this.valorLocacao = valorLocacao;
+    }
+
+    /**
+     * @return the diasLocacao
+     */
+    public int getDiasLocacao() {
+        return diasLocacao;
+    }
+
+    /**
+     * @param diasLocacao the diasLocacao to set
+     */
+    public void setDiasLocacao(int diasLocacao) {
+        this.diasLocacao = diasLocacao;
+    }
+    
     
 }
