@@ -38,7 +38,7 @@ public class Carro {
     public float calcularValorMulta(int dias)
     {
         if(dias > getDiasLocacao()){
-            return (dias-getDiasLocacao()) + 0.15f*getValorLocacao();
+            return (dias-getDiasLocacao()) * 0.15f*getValorLocacao();
         }
         
         return 0;
