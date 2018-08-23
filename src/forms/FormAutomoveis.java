@@ -5,6 +5,8 @@
  */
 package forms;
 
+import classes.Carro;
+
 /**
  *
  * @author alunoces
@@ -14,6 +16,8 @@ public class FormAutomoveis extends javax.swing.JFrame {
     /**
      * Creates new form FormAutomoveis
      */
+    private Carro carro = null;
+    
     public FormAutomoveis() {
         initComponents();
     }
@@ -74,11 +78,23 @@ public class FormAutomoveis extends javax.swing.JFrame {
         jLabel7.setText("Valor da Multa");
         jLabel7.setToolTipText("");
 
+        tfValorMulta.setEditable(false);
+
         btCalcularMulta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCalcularMulta.setText("Calcular Multa");
+        btCalcularMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCalcularMultaActionPerformed(evt);
+            }
+        });
 
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setText("CADASTRAR");
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
@@ -191,6 +207,30 @@ public class FormAutomoveis extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        carro = new Carro();
+        
+        String nome = tfNome.getText();
+        
+        carro.setNome(nome);
+        carro.setNome(tfNome.getText());
+        
+       // int codigo = Integer.parseInt(tfCodigo.getText());
+        String codigo = tfCodigo.getText();
+        float preco = Float.parseFloat(tfPrecoLocacao.getText());
+        //carro.setCodigo(codigo);
+        carro.setCodigo(codigo);
+        
+        btCalcularMulta.setEnabled(true);
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btCalcularMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularMultaActionPerformed
+        int dias = Integer.parseInt(tfDiasLocados.getText());
+        float multa = carro.calcularValorMulta(dias);
+        
+        tfValorMulta.setText(Float.toString(multa));
+    }//GEN-LAST:event_btCalcularMultaActionPerformed
 
     /**
      * @param args the command line arguments
