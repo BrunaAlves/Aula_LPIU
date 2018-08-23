@@ -24,6 +24,16 @@ public class Carro {
         diasLocacao = 10;
            
     }
+
+    public Carro(String codigo, String nome, String marca, String modelo, float preco, float valorLocacao, int diasLocacao) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.preco = preco;
+        this.valorLocacao = valorLocacao;
+        this.diasLocacao = diasLocacao;
+    }
     
     public float calcularValorMulta(int dias)
     {
