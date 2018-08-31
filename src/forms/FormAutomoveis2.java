@@ -331,7 +331,7 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         auto = new Automovel();
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setLenient(false);
+        //sdf.setLenient(false);
         
         auto.setPlaca(tfPlaca.getText());
         auto.setModelo(tfModelo.getText());

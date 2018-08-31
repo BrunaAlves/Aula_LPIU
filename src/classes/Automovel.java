@@ -5,6 +5,7 @@
  */
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -18,6 +19,8 @@ public class Automovel {
     private String motorizacao;
     private float valorbasico;
     private String categoria;
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public Automovel(String placa, String modelo, Date datafabricacao, String motorizacao, float valorbasico, String categoria) {
         this.placa = placa;
@@ -47,7 +50,7 @@ public class Automovel {
         
         str += "Placa: " + placa + "\n";
         str += "Modelo: " + modelo + "\n";
-        str += "Data de Fabricação: " + datafabricacao + "\n";
+        str += "Data de Fabricação: " + sdf.format(datafabricacao) + "\n";
         str += "Motorização: " + motorizacao + "\n";
         str += "Valor básico: " + valorbasico + "\n";
         str += "Categoria: " + categoria + "\n";
