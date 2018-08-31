@@ -5,12 +5,21 @@
  */
 package forms;
 
+import classes.Automovel;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author bruna
  */
 public class FormAutomoveis2 extends javax.swing.JFrame {
-
+    Automovel auto = null;
+    
     /**
      * Creates new form FormAutomoveis2
      */
@@ -67,6 +76,11 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
 
         btAdicionar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btAdicionar.setText("Adicionar");
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
+            }
+        });
 
         tfPlaca.setBackground(new java.awt.Color(0, 0, 153));
         tfPlaca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -99,6 +113,11 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
 
         btExibir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btExibir.setText("Exibir");
+        btExibir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExibirActionPerformed(evt);
+            }
+        });
 
         taDadosAutomovel.setColumns(20);
         taDadosAutomovel.setRows(5);
@@ -111,12 +130,15 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
 
         bgCategoria.add(rbUtilitario);
         rbUtilitario.setText("Utilitário");
+        rbUtilitario.setActionCommand("Utilitario");
 
         bgCategoria.add(rbPasseio);
         rbPasseio.setText("Passeio");
+        rbPasseio.setActionCommand("Passeio");
 
         bgCategoria.add(rbCargo);
         rbCargo.setText("Cargo");
+        rbCargo.setActionCommand("Cargo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,11 +147,11 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rbUtilitario)
-                .addGap(40, 40, 40)
+                .addGap(66, 66, 66)
                 .addComponent(rbPasseio)
-                .addGap(74, 74, 74)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(rbCargo)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,10 +217,6 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,6 +269,10 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(134, 134, 134))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,14 +308,14 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
                     .addComponent(btLimpar))
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(87, 87, 87)
                         .addComponent(btExibir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -304,6 +326,31 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
     private void tfModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfModeloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfModeloActionPerformed
+
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        auto = new Automovel();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+        
+        auto.setPlaca(tfPlaca.getText());
+        auto.setModelo(tfModelo.getText());
+        auto.setMotorizacao((String) cbMotorizacao.getSelectedItem());
+        auto.setValorbasico(Float.parseFloat(tfValorBasico.getText()));
+        auto.setCategoria(bgCategoria.getSelection().getActionCommand());
+        
+        try {
+            auto.setDatafabricacao(sdf.parse(tfDataFabricacao.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(FormAutomoveis2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+    }//GEN-LAST:event_btAdicionarActionPerformed
+
+    private void btExibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExibirActionPerformed
+        taDadosAutomovel.append(auto.toString());
+    }//GEN-LAST:event_btExibirActionPerformed
 
     /**
      * @param args the command line arguments

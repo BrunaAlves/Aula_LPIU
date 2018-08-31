@@ -41,8 +41,9 @@ public class Automovel {
         return valorbasico+(valorbasico*0.05f) + calcularImposto(aliquota);
     }
     
-    public String getAutomovel(){
-        String str = null;
+    @Override
+    public String toString(){
+        String str = "";
         
         str += "Placa: " + placa + "\n";
         str += "Modelo: " + modelo + "\n";
