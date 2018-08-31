@@ -68,6 +68,10 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         btAdicionar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btAdicionar.setText("Adicionar");
 
+        tfPlaca.setBackground(new java.awt.Color(0, 0, 153));
+        tfPlaca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tfPlaca.setForeground(new java.awt.Color(255, 255, 0));
+
         tfModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfModeloActionPerformed(evt);
