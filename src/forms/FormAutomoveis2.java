@@ -37,7 +37,6 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tfDataFabricacao = new javax.swing.JTextField();
-        cMotorizacao = new java.awt.Choice();
         tfValorBasico = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tfImpostoAliquota = new javax.swing.JTextField();
@@ -56,6 +55,7 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         tfImpostoAPagar = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tfValorTotalCompra = new javax.swing.JTextField();
+        cbMotorizacao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,6 +183,9 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        cbMotorizacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbMotorizacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1.0", "1.4", "1.6", "1.8", "2.0" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,7 +221,7 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
                                             .addComponent(jLabel4)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(10, 10, 10)
-                                                .addComponent(cMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(cbMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(77, 77, 77)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tfValorBasico)
@@ -264,8 +267,9 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfDataFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfDataFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tfValorBasico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +342,7 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
     private javax.swing.JButton btCalcularValorTotal;
     private javax.swing.JButton btExibir;
     private javax.swing.JButton btLimpar;
-    private java.awt.Choice cMotorizacao;
+    private javax.swing.JComboBox<String> cbMotorizacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
