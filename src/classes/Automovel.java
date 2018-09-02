@@ -34,13 +34,12 @@ public class Automovel {
     public Automovel() {
     }
     
-    public int calcularImposto(int aliquota){
+    public float calcularImposto(float aliquota){
         
-        return (int) ((int) (valorbasico/aliquota) + valorbasico*0.03f);
+        return valorbasico*(aliquota/100) + 0.03f;
     }
     
-    public float valorTotalVeiculo(){
-        int aliquota = 0;
+    public float valorTotalVeiculo(float aliquota){
         return valorbasico+(valorbasico*0.05f) + calcularImposto(aliquota);
     }
     

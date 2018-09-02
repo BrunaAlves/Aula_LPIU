@@ -106,6 +106,11 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
 
         btCalcularValorTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btCalcularValorTotal.setText("Calcular Valor Total");
+        btCalcularValorTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCalcularValorTotalActionPerformed(evt);
+            }
+        });
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btLimpar.setForeground(new java.awt.Color(255, 0, 0));
@@ -351,6 +356,15 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
     private void btExibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExibirActionPerformed
         taDadosAutomovel.append(auto.toString());
     }//GEN-LAST:event_btExibirActionPerformed
+
+    private void btCalcularValorTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularValorTotalActionPerformed
+       float aliquota = auto.calcularImposto(Float.parseFloat(tfImpostoAliquota.getText()));
+       
+      float valorTotal = auto.valorTotalVeiculo(Integer.parseInt(tfImpostoAliquota.getText()));
+        
+        tfImpostoAPagar.setText(String.valueOf(aliquota));
+        tfValorTotalCompra.setText(String.valueOf(valorTotal));
+    }//GEN-LAST:event_btCalcularValorTotalActionPerformed
 
     /**
      * @param args the command line arguments
