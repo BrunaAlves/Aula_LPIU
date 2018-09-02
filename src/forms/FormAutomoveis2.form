@@ -205,6 +205,9 @@
           <Color blue="0" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPlacaKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfModelo">
       <Events>
@@ -248,6 +251,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfImpostoAliquota">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfImpostoAliquotaKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btCalcularValorTotal">
       <Properties>

@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +26,10 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
      */
     public FormAutomoveis2() {
         initComponents();
+        btAdicionar.setEnabled(false);
+        btCalcularValorTotal.setEnabled(false);
+        btExibir.setEnabled(false);
+                
     }
 
     /**
@@ -85,6 +90,11 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         tfPlaca.setBackground(new java.awt.Color(0, 0, 153));
         tfPlaca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tfPlaca.setForeground(new java.awt.Color(255, 255, 0));
+        tfPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfPlacaKeyPressed(evt);
+            }
+        });
 
         tfModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +113,12 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Aliquota de imposto");
+
+        tfImpostoAliquota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfImpostoAliquotaKeyReleased(evt);
+            }
+        });
 
         btCalcularValorTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btCalcularValorTotal.setText("Calcular Valor Total");
@@ -336,7 +352,7 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
     private void tfModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfModeloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfModeloActionPerformed
-
+    
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         auto = new Automovel();
         
@@ -355,7 +371,7 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
             Logger.getLogger(FormAutomoveis2.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso", "Cadastro de veículo", WIDTH);
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btExibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExibirActionPerformed
@@ -369,6 +385,8 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         
         tfImpostoAPagar.setText(String.valueOf(aliquota));
         tfValorTotalCompra.setText(String.valueOf(valorTotal));
+        
+        btExibir.setEnabled(true);
     }//GEN-LAST:event_btCalcularValorTotalActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -384,7 +402,19 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         
         tfPlaca.requestFocus();
         
+        btCalcularValorTotal.setEnabled(false);
+        btExibir.setEnabled(false);
+        btAdicionar.setEnabled(false);
+        
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void tfPlacaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPlacaKeyPressed
+        btAdicionar.setEnabled(true);
+    }//GEN-LAST:event_tfPlacaKeyPressed
+
+    private void tfImpostoAliquotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfImpostoAliquotaKeyReleased
+        btCalcularValorTotal.setEnabled(true);
+    }//GEN-LAST:event_tfImpostoAliquotaKeyReleased
 
     /**
      * @param args the command line arguments
