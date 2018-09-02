@@ -115,6 +115,11 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btLimpar.setForeground(new java.awt.Color(255, 0, 0));
         btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btExibir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btExibir.setText("Exibir");
@@ -365,6 +370,19 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         tfImpostoAPagar.setText(String.valueOf(aliquota));
         tfValorTotalCompra.setText(String.valueOf(valorTotal));
     }//GEN-LAST:event_btCalcularValorTotalActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfDataFabricacao.setText("");
+        tfImpostoAPagar.setText("");
+        tfImpostoAliquota.setText("");
+        tfModelo.setText("");
+        tfPlaca.setText("");
+        tfValorBasico.setText("");
+        tfValorTotalCompra.setText("");
+        cbMotorizacao.setSelectedIndex(-1);
+        bgCategoria.clearSelection();
+        
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
