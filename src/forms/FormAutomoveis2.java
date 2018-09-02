@@ -382,6 +382,8 @@ public class FormAutomoveis2 extends javax.swing.JFrame {
         cbMotorizacao.setSelectedIndex(-1);
         bgCategoria.clearSelection();
         
+        tfPlaca.requestFocus();
+        
     }//GEN-LAST:event_btLimparActionPerformed
 
     /**
